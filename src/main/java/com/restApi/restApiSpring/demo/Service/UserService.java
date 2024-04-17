@@ -1,18 +1,15 @@
 package com.restApi.restApiSpring.demo.Service;
 
-import com.restApi.restApiSpring.demo.entity.User;
-import com.restApi.restApiSpring.demo.repository.UserRepository;
+import com.restApi.restApiSpring.demo.dto.User;
+import com.restApi.restApiSpring.demo.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    public User findByName(String name);
 
-    public User findByName(String name) {
-        return userRepository.findByName(name);
-    }
+    public User findByEmail(String email);
 
+    public int save(User user);
 }

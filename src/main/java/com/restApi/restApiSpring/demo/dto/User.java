@@ -1,4 +1,4 @@
-package com.restApi.restApiSpring.demo.entity;
+package com.restApi.restApiSpring.demo.dto;
 
 import lombok.*;
 
