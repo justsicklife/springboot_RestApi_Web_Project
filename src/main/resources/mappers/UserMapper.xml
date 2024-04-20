@@ -7,11 +7,15 @@
         SELECT * FROM user where name = #{name}
     </select>
 
+    <select id="findAll" resultType="com.restApi.restApiSpring.demo.dto.User">
+        SELECT * FROM user
+    </select>
+
     <select id="findByEmail" resultType="com.restApi.restApiSpring.demo.dto.User">
         SELECT * FROM user where email = #{email}
     </select>
     
     <insert id="save" parameterType="com.restApi.restApiSpring.demo.dto.User">
-        insert into user values(0,#{name},#{email})
+        insert into user values(USER_ID_SEQ.nextval,#{name},#{email})
     </insert>
 </mapper>
