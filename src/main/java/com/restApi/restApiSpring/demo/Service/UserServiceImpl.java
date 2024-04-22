@@ -6,12 +6,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
     final UserMapper userMapper;
+
+    @Override
+    public Optional<User> findById(Long userId) {
+        return userMapper.findById(userId);
+    }
 
     @Override
     public List<User> findByName(String name) {
@@ -33,5 +39,14 @@ public class UserServiceImpl implements UserService{
         return userMapper.findAll();
     }
 
+    @Override
+    public int updateById(User user) {
+        return userMapper.updateById(user);
+    }
+
+    @Override
+    public int deleteById(Long userId) {
+        return userMapper.deleteById(userId);
+    }
 }
 

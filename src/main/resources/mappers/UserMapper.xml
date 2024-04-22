@@ -3,6 +3,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.restApi.restApiSpring.demo.repository.UserMapper">
+    <select id="findById" resultType="com.restApi.restApiSpring.demo.dto.User">
+        SELECT * FROM user where userId = #{userId}
+    </select>
+
     <select id="findByName" resultType="com.restApi.restApiSpring.demo.dto.User">
         SELECT * FROM user where name = #{name}
     </select>
@@ -18,4 +22,14 @@
     <insert id="save" parameterType="com.restApi.restApiSpring.demo.dto.User">
         insert into user values(USER_ID_SEQ.nextval,#{name},#{email})
     </insert>
+
+    <update id="updateById" parameterType="com.restApi.restApiSpring.demo.dto.User">
+        update user set
+        userId = #{userId}, email = #{email}, name = #{name}
+        where userId = #{userId}
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        delete from user where userId = #{userId}
+    </delete>
 </mapper>
