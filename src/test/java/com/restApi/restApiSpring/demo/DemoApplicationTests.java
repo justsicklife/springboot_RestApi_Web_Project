@@ -19,6 +19,30 @@ class DemoApplicationTests {
 	void name() {
 
 	}
-	
+
+
+	@Test
+	@DisplayName("제네릭 메서드 테스트")
+	void 제네릭테스트() {
+		A a = new A<Integer>();
+		a.a(150);
+		A.getName(10);
+	}
+
+	static class A<T> {
+
+		T a(T t) {
+			return t;
+		}
+
+		static <T> T getName(T name) {
+			return name;
+		}
+
+		public <T> T getGeneric(T generic) {
+			return generic;
+		}
+
+	}
 
 }

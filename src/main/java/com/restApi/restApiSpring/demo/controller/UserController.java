@@ -62,7 +62,7 @@ public class UserController {
     
     @Operation(summary = "회원 수정", description = "회원 정보를 수정합니다.")
     @PutMapping("/user")
-    public SingleResult<Integer> modify(
+    public CommonResult modify(
             @Parameter(name = "userId",required = true) @RequestParam Long userId,
             @Parameter(name = "email",required = true) @RequestParam String email,
             @Parameter(name = "name",required = true) @RequestParam String name
@@ -73,7 +73,7 @@ public class UserController {
                 .name(name)
                 .build();
 
-        return responseService.getSingleResult(userService.updateById(user));
+        return responseService.getOperatorResult(userService.updateById(user));
     }
 
     @Operation(summary = "회원 삭제",description = "회원 정보를 수정합니다.")
@@ -81,6 +81,7 @@ public class UserController {
     public CommonResult delete(@Parameter(name = "userId",required = true)
                                @PathVariable Long userId) {
 
+        userService.deleteById(userId);
         return responseService.getSuccessResult();
 
     }

@@ -40,6 +40,15 @@ public class ResponseService {
         return result;
     }
 
+    public CommonResult getOperatorResult(int number) {
+        CommonResult result = new CommonResult();
+        if(number > 0)
+            setSuccessResult(result);
+        else
+            setFailResult(result);
+        return result;
+    }
+
     // API 요청 성공 시 응답 모델을 성공 데이터로 세팅
     private void setSuccessResult(CommonResult result) {
         result.setSuccess(true);
@@ -53,4 +62,6 @@ public class ResponseService {
         result.setCode(CommonResponse.FAIL.getCode());
         result.setMsg(CommonResponse.FAIL.getMsg());
     }
+
+
 }
